@@ -33,10 +33,24 @@ class GroupsController < ApplicationController
   def update
     group = Group.find(params[:id])
     if group.update(group_params)
-      redirect_to group_path(group)
+      redirect_to group_path(group), notice: "更新にしました。"
     else
       render :edit
     end
+  end
+
+  def join
+    group = Group.find(params[:group_id])
+    unless group.users.include?(current_user)
+      group.users << current_user
+      redirect_to group_path(group)
+    end
+  end
+
+  def leave
+    group = Group.find(params[:group_id])
+    group.users.delete(current_user)
+    redirect_to groups_path
   end
 
   private

@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8 offset-2">
-      <h2>Update Group</h2>
+      <h2>Editing Group</h2>
+      <%= render "layouts/errors", obj: @group %>
       <%= render "form", group: @group %>
     </div>
   </div>
