@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   resources :groups, except: [:destroy] do
     get 'join' => 'groups#join'
     delete 'leave' => 'groups#leave'
+    get 'new/mail' => 'groups#new_mail'
+    get 'send/mail' => 'groups#send_mail'
   end
 end
